@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Generative Adversarial Networks for Technical Ear Training in Perceiving How Reverberation Affects Frequency Contents in Music Production Education">
+    <meta name="author" content="Marshall">
+    <meta name="keywords" content="Dereverberation, GAN, Unet, Deep learning"/>
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Demos | Music Dereverberation with UnetGanReverb</title>
+    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+
+</head>
+<body class="p-lg-5 p-3">
+<div class="container">
+    <header>
+        <h1 class="visually-hidden">Audio Dereverberation demos</h1>
+        <div class="px-4 pb-5 mb-5 text-center border-bottom">
+            <h2>Generative Adversarial Networks for Technical Ear Training in Perceiving How Reverberation Affects
+                Frequency Contents in Music Production Education</h2>
+            <div class="col-lg-8 mx-auto">
+                <h5 class="mt-3">Manni Chen<sup>1</sup>, Per Magnus Lindborg<sup>1</sup>, Shuo Meng<sup>2</sup></h5>
+                <h5 class="mt-3"><sup>1</sup>School of Creative Media, City University of Hong Kong<br>
+                    <sup>2</sup>Department of Biomedical Engineering, City University of Hong Kong</h5>
+            </div>
+        </div>
+        <!--  <div class="b-example-divider mb-0"></div>-->
+    </header>
+    <main>
+        <h2 id="Abstract">Abstract</h2>
+        <p class="fs-5" style="text-align: justify">
+            Technical ear training is a type of “perceptual learning focused timbral, dynamics and special attributes of
+            sound”, which is an integral in music production education. [1] Reverberation is an audio effect frequently
+            used in music production and it affects spectrum of audio and the timbre of music. In this case, for music
+            production students, the technical ear training in how reverb works on the perception on spectrum of audio
+            is important since sound engineers need to perceive subtle changes in timbre caused by reverb to reach the
+            target texture that they design in music production. However, simply differentiating the audio pieces
+            between non-reverb (original ones) and added reverb ones is not enough to compare only the change in
+            frequency contents due to the loss of spatial perception in non-reverb ones.
+        </p>
+        <div class="text-center">
+            <div class="container px-5">
+                <img src="assets/imgs/bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4"
+                     alt="Model Structure" width="700" height="500" loading="lazy">
+            </div>
+        </div>
+
+        <h2 id="Demos" class="mt-5 mb-3">Demos</h2>
+        <h4 id="Seen" class="mb-3">
+            <li>Seen Data</li>
+        </h4>
+        <div class="table-responsive">
+            <table class="table table-striped text-center  align-middle table-bordered">
+                <thead>
+                <th>Demo Types</th>
+                <th>Source (Reverb)</th>
+                <th>Target (Dry)</th>
+                <th>Result (Dereverb)</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Flute #1</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Flute #2</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Piano #1</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 id="Unseen" class="mt-5 mb-3">
+            <li>Unseen Data</li>
+        </h4>
+
+
+        <hr class="my-5">
+        <h3 id="Comparisons" class="my-5">Comparisons</h3>
+
+
+    </main>
+</div>
+<script src="assets/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+<style>
+
+</style>
+</html>
