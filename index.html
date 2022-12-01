@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-          content="Generative Adversarial Networks for Technical Ear Training in Perceiving How Reverberation Affects Frequency Contents in Music Production Education">
+          content="Generative adversarial network for music dereverbertion for technical ear training in music production">
     <meta name="author" content="Marshall">
     <meta name="keywords" content="Dereverberation, GAN, Unet, Deep learning"/>
     <meta name="generator" content="Hugo 0.104.2">
@@ -18,12 +18,13 @@
     <header>
         <h1 class="visually-hidden">Audio Dereverberation demos</h1>
         <div class="px-4 pb-5 mb-5 text-center border-bottom">
-            <h2>Generative Adversarial Networks for Technical Ear Training in Perceiving How Reverberation Affects
-                Frequency Contents in Music Production Education</h2>
+            <h2>Generative adversarial network for music dereverbertion for technical ear training in music
+                production</h2>
             <div class="col-lg-8 mx-auto">
-                <h5 class="mt-3">Manni Chen<sup>1</sup>, Per Magnus Lindborg<sup>1</sup>, Shuo Meng<sup>2</sup></h5>
-                <h5 class="mt-3"><sup>1</sup>School of Creative Media, City University of Hong Kong<br>
-                    <sup>2</sup>Department of Biomedical Engineering, City University of Hong Kong</h5>
+                <h5 class="mt-3">Manni Chen<sup>1</sup>, Shuo Meng<sup>2</sup>, Per Magnus Lindborg<sup>1</sup></h5>
+
+                <h6 class="mt-3"><sup>1</sup>School of Creative Media, City University of Hong Kong</h6>
+                <h6><sup>2</sup>Department of Biomedical Engineering, City University of Hong Kong</h6>
             </div>
         </div>
         <!--  <div class="b-example-divider mb-0"></div>-->
@@ -31,50 +32,69 @@
     <main>
         <h2 id="Abstract">Abstract</h2>
         <p class="fs-5" style="text-align: justify">
-            Technical ear training is a type of “perceptual learning focused timbral, dynamics and special attributes of
-            sound”, which is an integral in music production education. [1] Reverberation is an audio effect frequently
-            used in music production and it affects spectrum of audio and the timbre of music. In this case, for music
-            production students, the technical ear training in how reverb works on the perception on spectrum of audio
-            is important since sound engineers need to perceive subtle changes in timbre caused by reverb to reach the
-            target texture that they design in music production. However, simply differentiating the audio pieces
-            between non-reverb (original ones) and added reverb ones is not enough to compare only the change in
-            frequency contents due to the loss of spatial perception in non-reverb ones.
+            Reverberation is an audio effect used in music production, which affects spectrum of audio and the timbre of
+            music. In this case, technical ear training on how reverb works on the spectrum of audio is important since
+            sound engineers need to perceive subtle changes in timbre caused by reverb to reach the target texture that
+            they design in music production. In this paper, we propose a deep learning-based dereverberation method,
+            GANreverb, for music production education. The model employs a modified UNet module for the de-reverb task
+            and a GAN-based module acting as a vocoder to generate high-resolution audio. The experiments show that the
+            method can effectively realize dereverberation compared to other neural network-based methods according to
+            various objective evaluation metrics. Moreover, this implementation can be extended to other audio effects
+            like delay and denoising to explore the modifications in terms of technical ear training.
         </p>
         <div class="text-center">
             <div class="container px-5">
-                <img src="assets/imgs/bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4"
-                     alt="Model Structure" width="700" height="500" loading="lazy">
+                <img src="assets/imgs/Architecture.png" class="img-fluid border rounded-3 shadow-lg mb-4"
+                     alt="Model Structure" loading="lazy">
             </div>
         </div>
 
         <h2 id="Demos" class="mt-5 mb-3">Demos</h2>
-        <h4 id="Seen" class="mb-3">
-            <li>Seen Data</li>
-        </h4>
+        <!--        <h4 id="Seen" class="mb-3">-->
+        <!--            <li>Seen Data</li>-->
+        <!--        </h4>-->
         <div class="table-responsive">
-            <table class="table table-striped text-center  align-middle table-bordered">
+            <table class="table text-center  align-middle table-bordered">
                 <thead>
-                <th>Demo Types</th>
+                <th>Demo</th>
                 <th>Source (Reverb)</th>
                 <th>Target (Dry)</th>
-                <th>Result (Dereverb)</th>
+                <th>Proposed Method</th>
+                <th>MelGAN</th>
+                <th>HifiGAN </th>
+                <th>WPE </th>
                 </thead>
                 <tbody>
                 <tr>
                     <th>Flute #1</th>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/reverb/2C_FP_1.wav" type="audio/wav"/>
                         </audio>
                     </td>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/dry/2C_FP_1.wav" type="audio/wav"/>
                         </audio>
                     </td>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/dereverbed_proposed/2C_FP_1.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/2C_FP_1.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/2C_FP_1.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/2C_FP_1.wav" type="audio/wav"/>
                         </audio>
                     </td>
                 </tr>
@@ -82,35 +102,297 @@
                     <th>Flute #2</th>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/reverb/4C_FP_102.wav" type="audio/wav"/>
                         </audio>
                     </td>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/dry/4C_FP_102.wav" type="audio/wav"/>
                         </audio>
                     </td>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/dereverbed_proposed/4C_FP_102.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/4C_FP_102.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/4C_FP_102.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/4C_FP_102.wav" type="audio/wav"/>
                         </audio>
                     </td>
                 </tr>
                 <tr>
-                    <th>Piano #1</th>
+                    <th>Flute #3</th>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/reverb/5C_FP_48.wav" type="audio/wav"/>
                         </audio>
                     </td>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/dry/5C_FP_48.wav" type="audio/wav"/>
                         </audio>
                     </td>
                     <td>
                         <audio controls>
-                            <source src="assets/audios/individualAudio.wav" type="audio/wav"/>
+                            <source src="assets/audios/dereverbed_proposed/5C_FP_48.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/5C_FP_48.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/5C_FP_48.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/5C_FP_48.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Flute #4</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/6G_JM_28.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/6G_JM_28.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/6G_JM_28.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/6G_JM_28.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/6G_JM_28.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/6G_JM_28.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Flute #5</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/7C_FP_107.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/7C_FP_107.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/7C_FP_107.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/7C_FP_107.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/7C_FP_107.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/7C_FP_107.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Flute #6</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/9C_Mo_26.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/9C_Mo_26.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/9C_Mo_26.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/9C_Mo_26.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/9C_Mo_26.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/9C_Mo_26.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Flute #7</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/10C_FP_34.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/10C_FP_34.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/10C_FP_34.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/10C_FP_34.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/10C_FP_34.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/10C_FP_34.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Piano #1<br>(Unseen)</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/03_KO_2.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/03_KO_2.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/03_KO_2.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/03_KO_2.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/03_KO_2.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/03_KO_2.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Vocal #1<br>(Unseen)</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/03_DMD_8.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/03_DMD_8.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/03_DMD_8.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/03_DMD_8.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/03_DMD_8.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/03_DMD_8.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Vocal #2<br>(Unseen)</th>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/reverb/06_KO_0.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dry/06_KO_0.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/dereverbed_proposed/06_KO_0.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Melgan/06_KO_0.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/Hifigan/06_KO_0.wav" type="audio/wav"/>
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="assets/audios/wpe/06_KO_0.wav" type="audio/wav"/>
                         </audio>
                     </td>
                 </tr>
@@ -118,13 +400,13 @@
             </table>
         </div>
 
-        <h4 id="Unseen" class="mt-5 mb-3">
-            <li>Unseen Data</li>
-        </h4>
+        <!--        <h4 id="Unseen" class="mt-5 mb-3">-->
+        <!--            <li>Unseen Data</li>-->
+        <!--        </h4>-->
 
 
-        <hr class="my-5">
-        <h3 id="Comparisons" class="my-5">Comparisons</h3>
+        <!--        <hr class="my-5">-->
+        <!--        <h3 id="Comparisons" class="my-5">Comparisons</h3>-->
 
 
     </main>
